@@ -7,5 +7,14 @@
     "DurationMinutes": 60,
     "Location": "\u0414\u0456\u043C",
     "EndTime": "19:45:32.5840000"
+  },
+  {
+    "Id": "791a4c4b-e9f6-4585-ab15-db0d8810d78b",
+    "Title": "\u043F\u0440\u043E\u0432\u0435\u0440\u043A\u0430 2",
+    "Date": "2026-04-12T00:00:00+03:00",
+    "StartTime": "20:13:24.7677634",
+    "DurationMinutes": 60,
+    "Location": "",
+    "EndTime": "21:13:24.7677634"
   }
 ]

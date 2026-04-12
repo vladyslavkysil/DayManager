@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 using DayManager.Managers;
 using DayManager.Models;
@@ -16,13 +17,23 @@ namespace DayManager.UI
         // Ядро програми
         private EventManager _eventManager;
 
+        private ReminderTimer _reminderTimer;
+
         public MainForm()
         {
             _eventManager = new EventManager();
-            SetupUI();
+           
+            _eventManager = new EventManager();
+
+            //ініт таймер 
+            _reminderTimer = new ReminderTimer(_eventManager);
+            _reminderTimer.OnEventReminder += ShowReminder;
             
+             SetupUI();
             // Завантажуємо події для обраної дати під час старту
             UpdateEventsList(_calendar.SelectionStart);
+
+
         }
 
         private void SetupUI()
@@ -109,6 +120,16 @@ namespace DayManager.UI
 
                 }
             }
+        }
+
+         private void ShowReminder(DiaryEvent ev)
+        {
+            //отрисов в  основному  потоці
+            this.Invoke((MethodInvoker)delegate
+            {
+                var alert = new RemindrAlertForm(ev);
+                alert.Show();
+            });
         }
 
     }
