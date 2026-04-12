@@ -46,7 +46,7 @@ namespace DayManager.UI
                 BackColor = Color.LightGreen,
                 Cursor = Cursors.Hand
             };
-            // _btnAddEvent.Click += 
+              _btnAddEvent.Click += BtnAddEvent_Click; 
 
             _eventsListBox = new ListBox
             {
@@ -84,5 +84,32 @@ namespace DayManager.UI
                 }
             }
         }
+        private void  BtnAddEvent_Click(object? sender, EventArgs e)
+        {
+            //спливаюче вікно
+            using (var dialog  = new EventDialogForm(_calendar.SelectionStart))
+            {
+                if(dialog.ShowDialog() == DialogResult.OK)
+                {
+                    //якщо користувач  зберіг
+                 DiaryEvent newEvent = dialog.ResultEvent;
+
+                    if (_eventManager.AddEvent(newEvent))
+                    {
+                        UpdateEventsList(_calendar.SelectionStart);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Помилка! Це час зайнятий.",
+                        "Накладка часу",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    }
+
+                }
+            }
+        }
+
     }
 }
