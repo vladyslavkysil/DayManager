@@ -74,7 +74,7 @@ namespace DayManager
 
         //удаление задачи
 
-        public void DiaryEvent(string eventId)
+        public void DeleteEvent(string eventId)
         {
             var ev  = _events.FirstOrDefault(e => e.Id == eventId);
             
