@@ -85,5 +85,7 @@ namespace DayManager
                 }
         
         }
+
+        public List<DiaryEvent> GetAllEvents() => _events;
     }
 }

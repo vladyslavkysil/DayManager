@@ -102,5 +102,20 @@ namespace DayManager.UI
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        public void LoadEventData(DiaryEvent ev)
+        {
+            _txtTitle.Text = ev.Title;
+            _dtpDate.Value = ev.Date;
+
+            //Час  початку
+
+            _dtpStartTime.Value = DateTime.Today.Add(ev.StartTime);
+            _numDuration.Value = ev.DurationMinutes;
+            _txtLocation.Text = ev.Location;
+
+            this.Text = "Редагувати  подію";
+            _btnSave.Text = "Оновити";
+        }
     }
 }
